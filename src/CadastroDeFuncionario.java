@@ -1,3 +1,7 @@
+
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -26,6 +30,7 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -40,21 +45,31 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
         cbTransporte = new javax.swing.JCheckBox();
         cbHome = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
-        turno = new javax.swing.JLabel();
+        lbTurno = new javax.swing.JLabel();
         rbManha = new javax.swing.JRadioButton();
         rbTarde = new javax.swing.JRadioButton();
         rbNoite = new javax.swing.JRadioButton();
-        lbExperiencia = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        sldExperiencia = new javax.swing.JLabel();
+        sldExperience = new javax.swing.JSlider();
         jButton1 = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Funcionários ");
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel1.setText("Hannibal Offices");
+        jLabel1.setText("Cadastro de funcionário");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -62,13 +77,18 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 255));
         jLabel2.setText("Nome do funcionário ");
 
         txtNome.setText("nome");
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
 
         cbSetor.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        cbSetor.setForeground(new java.awt.Color(0, 0, 0));
+        cbSetor.setForeground(new java.awt.Color(204, 204, 255));
         cbSetor.setText("Setor");
 
         cbItems.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RH", "TI ", "Financeiro ", "Admnistrativo " }));
@@ -117,7 +137,7 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
         jPanel3.setForeground(new java.awt.Color(153, 153, 153));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(204, 204, 255));
         jLabel4.setText("Benefícios");
 
         cbAlimentacao.setText("Vale Alimentação ");
@@ -181,9 +201,9 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
 
-        turno.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        turno.setForeground(new java.awt.Color(0, 0, 0));
-        turno.setText("Turno");
+        lbTurno.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        lbTurno.setForeground(new java.awt.Color(204, 204, 255));
+        lbTurno.setText("Turno");
 
         buttonGroup1.add(rbManha);
         rbManha.setText("Manhã");
@@ -209,15 +229,20 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
             }
         });
 
-        lbExperiencia.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        lbExperiencia.setForeground(new java.awt.Color(0, 0, 0));
-        lbExperiencia.setText("Experiência");
+        sldExperiencia.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        sldExperiencia.setForeground(new java.awt.Color(204, 204, 255));
+        sldExperiencia.setText("Experiência");
+        sldExperiencia.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                sldExperienciaPropertyChange(evt);
+            }
+        });
 
-        jSlider1.setMaximum(10);
-        jSlider1.setValue(5);
-        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+        sldExperience.setMaximum(10);
+        sldExperience.setValue(5);
+        sldExperience.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider1StateChanged(evt);
+                sldExperienceStateChanged(evt);
             }
         });
 
@@ -238,7 +263,7 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(turno, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,13 +271,13 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(rbNoite)
                                 .addComponent(rbTarde)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbExperiencia)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sldExperiencia)
+                    .addComponent(sldExperience, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(129, 129, 129))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(301, 301, 301)
+                .addGap(278, 278, 278)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -261,20 +286,17 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(turno)
-                    .addComponent(lbExperiencia))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rbManha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbTarde))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbTurno)
+                    .addComponent(sldExperiencia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbManha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbTarde)
+                    .addComponent(sldExperience, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbNoite)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -308,7 +330,7 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(389, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -317,7 +339,7 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,75 +354,118 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
 
     private void cbItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbItemsActionPerformed
         // TODO add your handling code here:
+ 
     }//GEN-LAST:event_cbItemsActionPerformed
-    String beneficios = "";
+
     private void cbAlimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAlimentacaoActionPerformed
         // TODO add your handling code here:
-        if(cbAlimentacao.isSelected()){
-            beneficios += "Vale Alimentação\n";
-}
     }//GEN-LAST:event_cbAlimentacaoActionPerformed
 
     private void cbPlanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPlanoActionPerformed
         // TODO add your handling code here:
-        if (cbPlano.isSelected()){
-            beneficios += "Plano de Saúde";
-        }
     }//GEN-LAST:event_cbPlanoActionPerformed
 
     private void rbManhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbManhaActionPerformed
-        // TODO add your handling code here:
-        
-        String turno = "";
-        if(rbManha.isSelected()){
-            turno = "Manhã";
-        }
-        else if(rbTarde.isSelected()){
-            turno = "Tarde";
-        }
-        else if(rbNoite.isSelected()){
-           turno = "Noite";
-}
-        
-      
+ 
+  
     }//GEN-LAST:event_rbManhaActionPerformed
 
     private void rbTardeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTardeActionPerformed
-        // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_rbTardeActionPerformed
 
-    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        // TODO add your handling code here:
-        lbExperiencia.setText("Experiência: " + jSlider1.getValue());
-    }//GEN-LAST:event_jSlider1StateChanged
+    private void sldExperienceStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldExperienceStateChanged
+
+    }//GEN-LAST:event_sldExperienceStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String nome = txtNome.getText();
         
-        
+    String nome = txtNome.getText();
+
+    String setor = cbItems.getSelectedItem().toString();
+
+    String beneficios = "";
+
+    if(cbAlimentacao.isSelected()){
+
+        beneficios += "Vale Alimentação\n";
+
+    }
+
+    if(cbPlano.isSelected()){
+
+        beneficios += "Plano de Saúde\n";
+
+    }
+
+    if(cbTransporte.isSelected()){
+
+        beneficios += "Vale Transporte\n";
+
+    }
+
+    if(cbHome.isSelected()){
+
+        beneficios += "Home Office\n";
+
+    }
+
+    String turno = "";
+
+    if(rbManha.isSelected()){
+
+        turno = "Manhã";
+
+    }
+
+    else if(rbTarde.isSelected()){
+
+        turno = "Tarde";
+
+    }
+
+    else if(rbNoite.isSelected()){
+
+        turno = "Noite";
+
+    }
+
+    int experiencia = sldExperience.getValue();
+
+    JOptionPane.showMessageDialog(null,
+
+        "Nome: " + nome +
+
+        "\nSetor: " + setor +
+
+        "\n\nBenefícios:\n" + beneficios +
+
+        "\nTurno: " + turno +
+
+        "\nExperiência: " + experiencia
+
+    );
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbTransporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTransporteActionPerformed
-        // TODO add your handling code here:
-        if(cbTransporte.isSelected()){
-            beneficios += "Vale transporte";
-            
-        }
+
     }//GEN-LAST:event_cbTransporteActionPerformed
 
     private void cbHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHomeActionPerformed
-        // TODO add your handling code here:
-        if(cbHome.isSelected()){
-            beneficios += "Home Office";
-        }
+
     }//GEN-LAST:event_cbHomeActionPerformed
 
     private void rbNoiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoiteActionPerformed
-        // TODO add your handling code here:
-        
+ 
     }//GEN-LAST:event_rbNoiteActionPerformed
+
+    private void sldExperienciaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_sldExperienciaPropertyChange
+ 
+    }//GEN-LAST:event_sldExperienciaPropertyChange
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,8 +500,9 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
                 new CadastroDeFuncionario().setVisible(true);
             }
         });
+        
     }
-
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox cbAlimentacao;
@@ -453,12 +519,13 @@ public class CadastroDeFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JLabel lbExperiencia;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lbTurno;
     private javax.swing.JRadioButton rbManha;
     private javax.swing.JRadioButton rbNoite;
     private javax.swing.JRadioButton rbTarde;
-    private javax.swing.JLabel turno;
+    private javax.swing.JSlider sldExperience;
+    private javax.swing.JLabel sldExperiencia;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
